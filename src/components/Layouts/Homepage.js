@@ -6,171 +6,178 @@ import {
   Container,
   Grid,
   Button,
-  CardActions
+  CardActions,
+  CssBaseline
 } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme();
 
 const Homepage = () => {
   return (
-    <Container style={{ padding: "50px" }}>
-      <Grid container spacing={3}>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
+    <ThemeProvider theme={theme}>
+      <Container component="main" styles={{ padding: "50" }}>
+        <CssBaseline />
+        <Grid container spacing={3}>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item sm={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h5">UPSC</Typography>
+                <Typography variant="subtitle1">
+                  Union Public Service Commission
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button>Start</Button>
+              </CardActions>
+            </Card>
+          </Grid>
         </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item sm={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5">UPSC</Typography>
-              <Typography variant="subtitle1">
-                Union Public Service Commission
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button>Start</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </ThemeProvider>
   );
 };
 

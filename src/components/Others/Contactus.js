@@ -6,12 +6,14 @@ import {
   Grid,
   TextField,
   Button,
-  Container
+  Container,
+  CssBaseline
 } from "@mui/material";
 
 const Contactus = () => {
   return (
     <Container style={{ padding: "50px" }}>
+      <CssBaseline />
       <Card style={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}>
         <CardContent>
           <Typography gutterBottom variant="h3" align="center">
