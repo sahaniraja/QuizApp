@@ -4,7 +4,7 @@ import MenuBook from "@mui/icons-material/MenuBook";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
   return (
     <div>
       <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
