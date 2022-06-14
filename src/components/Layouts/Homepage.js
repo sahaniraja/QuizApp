@@ -9,6 +9,7 @@ import {
   CardActions,
   CssBaseline
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
@@ -49,7 +50,15 @@ const Homepage = () => {
                     <Typography variant="subtitle1">{module.desc}</Typography>
                   </CardContent>
                   <CardActions>
-                    <Button variant="contained" color="primary">
+                    <Button
+                      LinkComponent={Link}
+                      to={{
+                        pathname: `/quiztype/${module.name}`,
+                        data: `${module.desc}`
+                      }}
+                      variant="contained"
+                      color="primary"
+                    >
                       Start
                     </Button>
                   </CardActions>

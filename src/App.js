@@ -6,6 +6,7 @@ import SignIn from "./components/Registrations/SignIn";
 import Aboutus from "./components/Others/Aboutus";
 import Contactus from "./components/Others/Contactus";
 import { Route, Routes } from "react-router-dom";
+import QuizDesc from "./components/Layouts/QuizDesc";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} exact />
           <Route path="/aboutus" element={<Aboutus />} exact />
           <Route path="/contactus" element={<Contactus />} exact />
+          <Route path="/quiztype/:title" element={<QuizDesc />} exact />
         </Routes>
       </main>
     </React.Fragment>
