@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./components/Layouts/Header";
+import Footer from "./components/Layouts/Footer";
 import Homepage from "./components/Layouts/Homepage";
 import SignUp from "./components/Registrations/SignUp";
 import SignIn from "./components/Registrations/SignIn";
@@ -24,6 +25,9 @@ function App() {
           <Route path="/quiztype/:id" element={<QuizDesc />} exact />
         </Routes>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </React.Fragment>
   );
 }
