@@ -21,7 +21,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} exact />
           <Route path="/aboutus" element={<Aboutus />} exact />
           <Route path="/contactus" element={<Contactus />} exact />
-          <Route path="/quiztype/:title" element={<QuizDesc />} exact />
+          <Route path="/quiztype/:id" element={<QuizDesc />} exact />
         </Routes>
       </main>
     </React.Fragment>

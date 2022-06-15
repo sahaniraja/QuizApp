@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Typography,
   Card,
@@ -11,6 +11,26 @@ import {
 } from "@mui/material";
 
 const Contactus = () => {
+  const [state, setState] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    message: ""
+  });
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    state;
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
   return (
     <Container style={{ padding: "50px" }}>
       <CssBaseline />
@@ -27,13 +47,15 @@ const Contactus = () => {
           >
             Fill up the form and our team will get back to you within 24 hours.
           </Typography>
-          <form>
+          <form onSubmit={handleOnSubmit}>
             <Grid container spacing={1}>
               <Grid xs={12} sm={6} item>
                 <TextField
                   label="First Name"
                   placeholder="Enter your first name"
                   variant="outlined"
+                  name="firstname"
+                  onChange={handleInputChange}
                   fullWidth
                   required
                 />
@@ -43,6 +65,8 @@ const Contactus = () => {
                   label="First Name"
                   placeholder="Enter your first name"
                   variant="outlined"
+                  name="lastname"
+                  onChange={handleInputChange}
                   fullWidth
                   required
                 />
@@ -52,7 +76,9 @@ const Contactus = () => {
                   type="email"
                   label="Email"
                   placeholder="Enter your email"
-                  varian="outlined"
+                  variant="outlined"
+                  name="email"
+                  onChange={handleInputChange}
                   fullWidth
                   required
                 />
@@ -63,7 +89,9 @@ const Contactus = () => {
                   multiline
                   rows={4}
                   placeholder="Type your message here"
-                  varian="outlined"
+                  variant="outlined"
+                  name="message"
+                  onChange={handleInputChange}
                   fullWidth
                   required
                 />
