@@ -46,7 +46,13 @@ const QuizDesc = () => {
           spacing={2}
           justifyContent="center"
         >
-          <Button variant="contained">Sample Quiz</Button>
+          <Button
+            variant="contained"
+            LinkComponent={Link}
+            to={{ pathname: `/quiz/${id}/samplequiz/` }}
+          >
+            Sample Quiz
+          </Button>
           <Button variant="contained">Pay</Button>
           <Button variant="contained">Attempt Quiz</Button>
           <Button

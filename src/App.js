@@ -8,6 +8,8 @@ import Aboutus from "./components/Others/Aboutus";
 import Contactus from "./components/Others/Contactus";
 import { Route, Routes } from "react-router-dom";
 import QuizDesc from "./components/Layouts/QuizDesc";
+import { Box } from "@mui/material";
+import Instructions from "./components/Quizzes/Instructions";
 
 function App() {
   return (
@@ -16,14 +18,21 @@ function App() {
         <Header />
       </header>
       <main>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/signup" element={<SignUp />} exact />
-          <Route path="/signin" element={<SignIn />} exact />
-          <Route path="/aboutus" element={<Aboutus />} exact />
-          <Route path="/contactus" element={<Contactus />} exact />
-          <Route path="/quiztype/:id" element={<QuizDesc />} exact />
-        </Routes>
+        <Box sx={{ pt: "8vh", pb: "12vh" }}>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/signup" element={<SignUp />} exact />
+            <Route path="/signin" element={<SignIn />} exact />
+            <Route path="/aboutus" element={<Aboutus />} exact />
+            <Route path="/contactus" element={<Contactus />} exact />
+            <Route path="/quiztype/:id" element={<QuizDesc />} exact />
+            <Route
+              path="/quiz/:id/samplequiz"
+              element={<Instructions />}
+              exact
+            />
+          </Routes>
+        </Box>
       </main>
       <footer>
         <Footer />

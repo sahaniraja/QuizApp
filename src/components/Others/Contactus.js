@@ -32,7 +32,7 @@ const Contactus = () => {
   };
 
   return (
-    <Container style={{ padding: "50px" }}>
+    <Container style={{ padding: "30px" }}>
       <CssBaseline />
       <Card style={{ maxWidth: 450, margin: "0 auto", padding: "20px 5px" }}>
         <CardContent>

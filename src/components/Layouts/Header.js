@@ -1,17 +1,60 @@
 import React, { useState } from "react";
-import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Tab,
+  Tabs,
+  Toolbar,
+  IconButton,
+  Typography,
+  Button,
+  Stack
+} from "@mui/material";
 import MenuBook from "@mui/icons-material/MenuBook";
-import { NavLink } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const [value, setValue] = useState(0);
   return (
     <div>
+      <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Button size="small">
+          <MenuBook />
+        </Button>
+        <Typography
+          component="h2"
+          variant="h5"
+          color="inherit"
+          align="center"
+          noWrap
+          sx={{ flex: 1 }}
+        >
+          Fun & Earn Quiz
+        </Typography>
+        <IconButton>
+          <SearchIcon />
+        </IconButton>
+        <Stack direction="row" spacing={2}>
+          <Button
+            variant="contained"
+            size="small"
+            LinkComponent={Link}
+            to="/signin"
+          >
+            Sign in
+          </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            LinkComponent={Link}
+            to="/signup"
+          >
+            Sign up
+          </Button>
+        </Stack>
+      </Toolbar>
       <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
         <Toolbar>
-          <Typography>
-            <MenuBook />
-          </Typography>
           <Tabs
             sx={{ ml: "auto" }}
             textColor="inherit"
