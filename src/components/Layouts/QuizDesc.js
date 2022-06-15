@@ -7,7 +7,7 @@ import {
   Stack,
   Button
 } from "@mui/material";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const QuizDesc = () => {
   const { id } = useParams();
@@ -49,7 +49,14 @@ const QuizDesc = () => {
           <Button variant="contained">Sample Quiz</Button>
           <Button variant="contained">Pay</Button>
           <Button variant="contained">Attempt Quiz</Button>
-          <Button variant="contained">Go Back</Button>
+          <Button
+            LinkComponent={Link}
+            to="/"
+            variant="contained"
+            color="primary"
+          >
+            Go Back
+          </Button>
         </Stack>
       </Container>
     </Box>
