@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CssBaseline,
   Button,
@@ -9,10 +9,28 @@ import {
   Typography,
   CardHeader,
   Stack,
-  CardActions
+  CardActions,
+  Divider,
+  Grid,
+  Paper,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  TextField,
+  DialogActions
 } from "@mui/material";
 
 const Instructions = () => {
+  const [open, setOpen] = useState(false);
+
+  const clickBtn = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Container>
       <CssBaseline />
@@ -23,7 +41,36 @@ const Instructions = () => {
         }}
       >
         <Card>
-          <CardHeader title="Sample Quiz Declarations" align="center" />
+          <CardHeader title="Sample Quiz" align="center" />
+          <Divider variant="middle" />
+          <Stack
+            sx={{ pt: 1 }}
+            direction="row"
+            spacing={5}
+            justifyContent="center"
+          >
+            <Typography>
+              <Paper elevation="0">
+                <b>Date:</b> 16-06-2022
+              </Paper>
+            </Typography>
+            <Typography>
+              <Paper elevation="0">
+                <b>Score:</b> 50{" "}
+              </Paper>
+            </Typography>
+            <Typography>
+              <Paper elevation="0">
+                <b>Questions:</b> 25{" "}
+              </Paper>
+            </Typography>
+            <Typography>
+              <Paper elevation="0">
+                <b>Duration:</b> 20 minutes{" "}
+              </Paper>
+            </Typography>
+          </Stack>
+          <Divider variant="middle" />
           <CardContent>
             <Typography variant="h6" align="center">
               Instructions Page
@@ -42,13 +89,45 @@ const Instructions = () => {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained" color="secondary">
-                Start Quiz
+              <Button variant="contained" color="secondary" onClick={clickBtn}>
+                Proceed
               </Button>
             </Stack>
           </CardActions>
         </Card>
       </Box>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Sample Quiz</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            To start with sample quiz fill with this form to start the quiz,
+            please enter your email address here. We will send updates
+            occasionally.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Full Name"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email Address"
+            type="email"
+            fullWidth
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Start Quiz</Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
