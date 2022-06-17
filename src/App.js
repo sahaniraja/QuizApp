@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Layouts/Header";
 import Footer from "./components/Layouts/Footer";
 import Homepage from "./components/Layouts/Homepage";
@@ -10,8 +10,11 @@ import { Route, Routes } from "react-router-dom";
 import QuizDesc from "./components/Layouts/QuizDesc";
 import { Box } from "@mui/material";
 import Instructions from "./components/Quizzes/Instructions";
+import SampleQuiz from "./components/Quizzes/SampleQuiz";
 
 function App() {
+  const [name, setName] = useState("jjjjjjjjjjjjjjjjjjjj");
+
   return (
     <React.Fragment>
       <header>
@@ -29,6 +32,13 @@ function App() {
             <Route
               path="/quiz/:id/samplequiz"
               element={<Instructions />}
+              exact
+            />
+            <Route
+              path="/sample/startquiz"
+              setName={setName}
+              name={name}
+              element={<SampleQuiz />}
               exact
             />
           </Routes>

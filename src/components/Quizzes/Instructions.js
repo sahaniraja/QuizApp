@@ -20,9 +20,28 @@ import {
   TextField,
   DialogActions
 } from "@mui/material";
+import { ErrorMessage } from "../Notifications/ErrorMessage";
+import { useNavigate } from "react-router-dom";
 
 const Instructions = () => {
+  const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  //const [error, setError] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    //fetchUsrDetail(fullname, email);
+    navigate(`/sample/startquiz`);
+    // if (!fullname || !email) {
+    //   setError(true);
+    //   return;
+    // } else {
+    //   setError(false);
+    //   navigate(`/`);
+    // }
+  };
 
   const clickBtn = () => {
     setOpen(true);
@@ -104,28 +123,34 @@ const Instructions = () => {
             please enter your email address here. We will send updates
             occasionally.
           </DialogContentText>
+          {/* {error && (
+            <ErrorMessage>Please fill the required details.</ErrorMessage>
+          )} */}
           <TextField
             autoFocus
             margin="dense"
             id="name"
             label="Full Name"
             type="text"
+            name="name"
             fullWidth
             variant="standard"
+            onChange={(e) => setName(e.target.value)}
           />
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="email"
             label="Email Address"
             type="email"
             fullWidth
             variant="standard"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Start Quiz</Button>
+          <Button onClick={handleSubmit}>Start Quiz</Button>
         </DialogActions>
       </Dialog>
     </Container>
