@@ -8,20 +8,20 @@ import Aboutus from "./components/Others/Aboutus";
 import Contactus from "./components/Others/Contactus";
 import { Route, Routes } from "react-router-dom";
 import QuizDesc from "./components/Layouts/QuizDesc";
-import { Box } from "@mui/material";
+import ThemeCustomization from "./themes";
 import Instructions from "./components/Quizzes/Instructions";
 import SampleQuiz from "./components/Quizzes/SampleQuiz";
 
 function App() {
-  const [name, setName] = useState("jjjjjjjjjjjjjjjjjjjj");
+  const [name, setName] = useState("");
 
   return (
     <React.Fragment>
-      <header>
-        <Header />
-      </header>
-      <main>
-        <Box sx={{ pt: "8vh", pb: "12vh" }}>
+      <ThemeCustomization>
+        <header>
+          <Header />
+        </header>
+        <main>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/signup" element={<SignUp />} exact />
@@ -42,11 +42,9 @@ function App() {
               exact
             />
           </Routes>
-        </Box>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+        </main>
+        <Routes />
+      </ThemeCustomization>
     </React.Fragment>
   );
 }
