@@ -7,14 +7,16 @@ import MainLayout from "../layout/MainLayout";
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("../pages/dashboard")));
 
+// render - subdashboard
 const SubDashboard = Loadable(
   lazy(() => import("../pages/dashboard/subdashboard"))
 );
 
-// render - sample page
-const SamplePage = Loadable(
-  lazy(() => import("../pages/extra-pages/SamplePage"))
-);
+// render - exam quiz page
+const ExamQuiz = Loadable(lazy(() => import("../pages/exam")));
+
+//render - exam detail form
+const ExamDetail = Loadable(lazy(() => import("../pages/exam/ExamDetailForm")));
 
 // render - utilities
 const Typography = Loadable(
@@ -54,10 +56,6 @@ const MainRoutes = {
       ]
     },
     {
-      path: "sample-page",
-      element: <SamplePage />
-    },
-    {
       path: "shadow",
       element: <Shadow />
     },
@@ -72,6 +70,14 @@ const MainRoutes = {
     {
       path: "category/:id/:name",
       element: <SubDashboard />
+    },
+    {
+      path: "examquiz/:name/:id",
+      element: <ExamQuiz />
+    },
+    {
+      path: "examdetail/:id",
+      element: <ExamDetail />
     }
   ]
 };

@@ -72,7 +72,7 @@ const SubDashboard = () => {
                   <Typography
                     component={RouterLink}
                     sx={{ textDecoration: "none" }}
-                    to="/"
+                    to={`/examquiz/${subcat.subcatname}/${subcat.subcatid}`}
                     variant="body1"
                     color="primary"
                     align="right"
