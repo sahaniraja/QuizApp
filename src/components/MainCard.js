@@ -4,6 +4,8 @@ import { forwardRef } from "react";
 // material-ui
 import { useTheme } from "@mui/material/styles";
 import {
+  ButtonBase,
+  Button,
   Card,
   CardContent,
   CardHeader,
@@ -37,7 +39,7 @@ const MainCard = forwardRef(
       shadow,
       sx = {},
       title,
-      codeHighlight,
+      actionLink,
       ...others
     },
     ref
@@ -98,12 +100,15 @@ const MainCard = forwardRef(
         {!content && children}
 
         {/* card footer - clipboard & highlighter  */}
-        {codeHighlight && (
+        {actionLink && (
           <>
-            <Divider sx={{ borderStyle: "dashed" }} />
-            <Highlighter codeHighlight={codeHighlight} main>
+            {/* <Divider sx={{ borderStyle: "dashed" }} />
+            <Typography color="primary" align="right">
+              Welcome
+            </Typography> */}
+            {/* <Highlighter codeHighlight={codeHighlight} main>
               {children}
-            </Highlighter>
+            </Highlighter> */}
           </>
         )}
       </Card>

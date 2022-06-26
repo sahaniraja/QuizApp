@@ -1,16 +1,22 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+// scroll bar
+import "simplebar/src/simplebar.css";
+import { Provider as ReduxProvider } from "react-redux";
 
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import { store } from "./store";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <BrowserRouter basename="/">
-      <App />
-    </BrowserRouter>
+    <ReduxProvider store={store}>
+      <BrowserRouter basename="/">
+        <App />
+      </BrowserRouter>
+    </ReduxProvider>
   </StrictMode>
 );
