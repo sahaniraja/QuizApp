@@ -2,14 +2,15 @@
 import {
   Typography,
   Button,
-  Divider,
-  Box,
   Stack,
   FormControl,
   Grid,
   FormHelperText,
   InputLabel,
-  OutlinedInput
+  OutlinedInput,
+  Select,
+  MenuItem,
+  Autocomplete
 } from "@mui/material";
 //import Params from router dom
 import { useParams, Link as RouterLink } from "react-router-dom";
@@ -25,8 +26,32 @@ import AnimateButton from "../../components/@extended/AnimateButton";
 
 const ExamDetailForm = () => {
   const { id, name } = useParams();
+  const examtype = [
+    {
+      id: "1",
+      examname: "UPSC"
+    },
+    {
+      id: "2",
+      examname: "PBSC"
+    },
+    {
+      id: "3",
+      examname: "UPPSC"
+    },
+    {
+      id: "4",
+      examname: "MPSC"
+    },
+    {
+      id: "5",
+      examname: "CDSE"
+    }
+  ];
+
   return (
-    <MainCard title="Fill up the form to continue!!!">
+    <MainCard title="Fill up the form to continue!!!" sx={{ width: "50%" }}>
+     
       <Grid item xs={12}>
         <Formik
           initialValues={{
@@ -43,8 +68,11 @@ const ExamDetailForm = () => {
               .email("Must be a valid email")
               .max(255)
               .required("Email is required"),
-            mobileno: Yup.string().max(255).required("Mobile No. is required"),
-            examtyp: Yup.string().max(255).required("Exam Type is required"),
+            mobileno: Yup.string()
+              .min(10)
+              .max(10)
+              .required("Mobile No. is required"),
+            examtyp: Yup.string().max(1).required("Exam Type is required"),
             noofquest: Yup.string()
               .max(255)
               .required("No of Questions is required")
@@ -70,8 +98,8 @@ const ExamDetailForm = () => {
             touched,
             values
           }) => (
-            <Grid container spacing={3}>
-              <form noValidate onSubmit={handleSubmit}>
+            <form noValidate onSubmit={handleSubmit}>
+              <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Stack spacing={1}>
                     <InputLabel htmlFor="fullname-examform">
@@ -144,8 +172,7 @@ const ExamDetailForm = () => {
                     <InputLabel htmlFor="examtyp-examform">
                       Exam Type*
                     </InputLabel>
-                    <OutlinedInput
-                      type="text"
+                    <Select
                       id="examtyp-examform"
                       name="examtyp"
                       value={values.examtyp}
@@ -155,6 +182,7 @@ const ExamDetailForm = () => {
                       error={Boolean(touched.examtyp && errors.examtyp)}
                       inputProps={{}}
                     />
+
                     {touched.examtyp && errors.examtyp && (
                       <FormHelperText error id="helper-text-examtyp">
                         {errors.examtyp}
@@ -167,17 +195,22 @@ const ExamDetailForm = () => {
                     <InputLabel htmlFor="noofquest-examform">
                       No Of Questions. *
                     </InputLabel>
-                    <OutlinedInput
+                    <Select
                       type="text"
                       id="noofquest-examform"
                       name="noofquest"
-                      value=""
+                      value={values.noofquest}
                       onBlur={handleBlur}
                       onChange={handleChange}
                       fullWidth
                       error={Boolean(touched.noofquest && errors.noofquest)}
                       inputProps={{}}
-                    />
+                    >
+                      <MenuItem value="25">25 Questions</MenuItem>
+                      <MenuItem value="50">50 Questions</MenuItem>
+                      <MenuItem value="75">75 Questions</MenuItem>
+                      <MenuItem value="100">100 Questions</MenuItem>
+                    </Select>
                     {touched.noofquest && errors.noofquest && (
                       <FormHelperText error id="helper-text-noofquest">
                         {errors.noofquest}
@@ -185,7 +218,7 @@ const ExamDetailForm = () => {
                     )}
                   </Stack>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={6}>
                   <AnimateButton>
                     <Button
                       disableElevation
@@ -203,10 +236,25 @@ const ExamDetailForm = () => {
                     >
                       TakeQuiz
                     </Button>
+                    <Button
+                      disableElevation
+                      fullWidth
+                      size="large"
+                      type="submit"
+                      component={RouterLink}
+                      to='/startexam'
+                      sx={{
+                        my: 2
+                      }}
+                      variant="contained"
+                      align="justify"
+                    >
+                      Questions
+                    </Button>
                   </AnimateButton>
                 </Grid>
-              </form>
-            </Grid>
+              </Grid>
+            </form>
           )}
         </Formik>
       </Grid>

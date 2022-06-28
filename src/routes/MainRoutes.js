@@ -15,6 +15,11 @@ const SubDashboard = Loadable(
 // render - exam quiz page
 const ExamQuiz = Loadable(lazy(() => import("../pages/exam")));
 
+// render - exam quiz question page
+const ExamQuizQuest = Loadable(
+  lazy(() => import("../pages/exam/ExamQuizQuest"))
+);
+
 //render - exam detail form
 const ExamDetail = Loadable(lazy(() => import("../pages/exam/ExamDetailForm")));
 
@@ -78,6 +83,10 @@ const MainRoutes = {
     {
       path: "examdetail/:id",
       element: <ExamDetail />
+    },
+    {
+      path: "startexam/",
+      element: <ExamQuizQuest />
     }
   ]
 };
