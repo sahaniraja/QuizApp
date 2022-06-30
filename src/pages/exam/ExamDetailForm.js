@@ -1,3 +1,4 @@
+import { useState } from "react";
 // material-ui
 import {
   Typography,
@@ -9,8 +10,7 @@ import {
   InputLabel,
   OutlinedInput,
   Select,
-  MenuItem,
-  Autocomplete
+  MenuItem
 } from "@mui/material";
 //import Params from router dom
 import { useParams, Link as RouterLink } from "react-router-dom";
@@ -21,6 +21,7 @@ import { Formik } from "formik";
 //for form value and its validation
 import * as Yup from "yup";
 import AnimateButton from "../../components/@extended/AnimateButton";
+import ExamQuizQuest from "./ExamQuizQuest";
 
 // ==============================|| Exam Detail Form ||============================== //
 
@@ -49,9 +50,10 @@ const ExamDetailForm = () => {
     }
   ];
 
+  const [quizStart, setQuizStart] = useState(false);
+
   return (
     <MainCard title="Fill up the form to continue!!!" sx={{ width: "50%" }}>
-     
       <Grid item xs={12}>
         <Formik
           initialValues={{
@@ -236,21 +238,28 @@ const ExamDetailForm = () => {
                     >
                       TakeQuiz
                     </Button>
-                    <Button
-                      disableElevation
-                      fullWidth
-                      size="large"
-                      type="submit"
-                      component={RouterLink}
-                      to='/startexam'
-                      sx={{
-                        my: 2
-                      }}
-                      variant="contained"
-                      align="justify"
-                    >
-                      Questions
-                    </Button>
+                    {quizStart ? (
+                      <ExamQuizQuest retry={() => setcurrQuest(false)} />
+                    ) : (
+                      // <ExamDetailForm retry={() => setcurrQuest(false)} />
+                      <Button
+                        disableElevation
+                        fullWidth
+                        size="large"
+                        type="submit"
+                        component={RouterLink}
+                        to="/startexam"
+                        sx={{
+                          my: 2
+                        }}
+                        variant="contained"
+                        align="justify"
+                        start={() => setQuizStart(true)}
+                      >
+                        Questions
+                      </Button>
+                      //<ExamQuizQuest start={() => setcurrQuest(true)} />
+                    )}
                   </AnimateButton>
                 </Grid>
               </Grid>

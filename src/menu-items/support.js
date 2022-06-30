@@ -1,13 +1,18 @@
 // assets
-import { ChromeOutlined, QuestionOutlined } from "@ant-design/icons";
+import {
+  ChromeOutlined,
+  QuestionOutlined,
+  CommentOutlined
+} from "@ant-design/icons";
 
 // icons
 const icons = {
   ChromeOutlined,
-  QuestionOutlined
+  QuestionOutlined,
+  CommentOutlined
 };
 
-// ==============================|| MENU ITEMS - SAMPLE PAGE & DOCUMENTATION ||============================== //
+// ==============================|| MENU ITEMS - SUPPOTY PAGE ||============================== //
 
 const support = {
   id: "support",
@@ -15,18 +20,27 @@ const support = {
   type: "group",
   children: [
     {
-      id: "sample-page",
-      title: "Sample Page",
+      id: "help-support",
+      title: "Help & Support",
       type: "item",
-      url: "/sample-page",
+      url: "/help-suppot",
       icon: icons.ChromeOutlined
     },
     {
-      id: "documentation",
-      title: "Documentation",
+      id: "privacy-policy",
+      title: "Privacy & Policy",
       type: "item",
-      url: "https://codedthemes.gitbook.io/mantis-react/",
+      url: "#",
       icon: icons.QuestionOutlined,
+      external: true,
+      target: true
+    },
+    {
+      id: "feedback",
+      title: "Feedback",
+      type: "item",
+      url: "#",
+      icon: icons.CommentOutlined,
       external: true,
       target: true
     }

@@ -26,7 +26,7 @@ const DrawerHeader = ({ open }) => {
             "& .MuiChip-label": { fontSize: "0.625rem", py: 0.25 }
           }}
           component="a"
-          href="https://github.com/codedthemes/mantis-free-react-admin-template"
+          href="#"
           target="_blank"
           clickable
         />

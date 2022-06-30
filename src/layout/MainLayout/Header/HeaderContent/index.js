@@ -1,6 +1,6 @@
 // material-ui
 import { Box, IconButton, Link, useMediaQuery } from "@mui/material";
-import { GithubOutlined } from "@ant-design/icons";
+import { LoginOutlined, ProfileOutlined } from "@ant-design/icons";
 
 // project import
 import Search from "./Search";
@@ -20,14 +20,24 @@ const HeaderContent = () => {
 
       <IconButton
         component={Link}
-        href="#"
-        target="_blank"
+        href="/login"
         disableRipple
         color="secondary"
-        title="Download Free Version"
+        title="Login"
         sx={{ color: "text.primary", bgcolor: "grey.100" }}
       >
-        <GithubOutlined />
+        <LoginOutlined />
+      </IconButton>
+
+      <IconButton
+        component={Link}
+        href="/register"
+        disableRipple
+        color="secondary"
+        title="Register"
+        sx={{ color: "text.primary", bgcolor: "grey.100" }}
+      >
+        <ProfileOutlined />
       </IconButton>
 
       <Notification />
