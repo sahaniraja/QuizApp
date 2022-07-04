@@ -23,26 +23,26 @@ const support = {
       id: "help-support",
       title: "Help & Support",
       type: "item",
-      url: "/help-suppot",
+      url: "/help-support",
       icon: icons.ChromeOutlined
     },
     {
       id: "privacy-policy",
       title: "Privacy & Policy",
       type: "item",
-      url: "#",
+      url: "/privacy-policy",
       icon: icons.QuestionOutlined,
-      external: true,
-      target: true
+      external: false,
+      target: false
     },
     {
       id: "feedback",
       title: "Feedback",
       type: "item",
-      url: "#",
+      url: "/feed-back",
       icon: icons.CommentOutlined,
-      external: true,
-      target: true
+      external: false,
+      target: false
     }
   ]
 };

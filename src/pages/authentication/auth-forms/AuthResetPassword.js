@@ -4,7 +4,6 @@ import { Link as RouterLink } from "react-router-dom";
 // material-ui
 import {
   Button,
-  Checkbox,
   Divider,
   FormControlLabel,
   FormHelperText,

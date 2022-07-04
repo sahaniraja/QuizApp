@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 // material-ui
 import {
   Avatar,
@@ -74,83 +75,20 @@ const status = [
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 const DashboardDefault = () => {
+  const [category, setCategory] = useState([]);
+
   const [value, setValue] = useState("today");
   const [slot, setSlot] = useState("week");
 
-  const quizCategory = [
-    {
-      catid: "1",
-      catname: "Government",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "2",
-      catname: "Medical",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "3",
-      catname: "Science & Tech",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "4",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "5",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "6",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "7",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "8",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "9",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "10",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "11",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    },
-    {
-      catid: "12",
-      catname: "UPSC",
-      catdesc: "Union Public Service Commission",
-      isrecclsd: 0
-    }
-  ];
+  const getCategoryData = () => {
+    axios.get("https://nodejsquizapi.herokuapp.com/getcategory").then((res) => {
+      setCategory(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getCategoryData();
+  }, []);
 
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
@@ -158,15 +96,15 @@ const DashboardDefault = () => {
       <Grid item xs={12} sx={{ mb: -2.25 }}>
         <Typography variant="h5">Dashboard</Typography>
       </Grid>
-      {quizCategory.map((item) => {
-        const querypath = `/category/${item.catid}/${item.catname}`;
+      {category.map((data) => {
+        const querypath = `/category/${data._id}/${data.catname}`;
         return (
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <AnalyticEcommerce
               to={querypath}
-              title="Total Page Views"
-              count={item.catname}
-              percentage={59.3}
+              // title="Total Page Views"
+              count={data.catname}
+              // percentage={59.3}
               extra="35,000"
             />
           </Grid>

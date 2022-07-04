@@ -7,6 +7,15 @@ import MainLayout from "../layout/MainLayout";
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import("../pages/dashboard")));
 
+// render - masters
+const Category = Loadable(
+  lazy(() => import("../pages/admin/masters/Category"))
+);
+const SubCategory = Loadable(
+  lazy(() => import("../pages/admin/masters/SubCategory"))
+);
+const Product = Loadable(lazy(() => import("../pages/admin/masters/Product")));
+
 // render - subdashboard
 const SubDashboard = Loadable(
   lazy(() => import("../pages/dashboard/subdashboard"))
@@ -23,15 +32,16 @@ const ExamQuizQuest = Loadable(
 //render - exam detail form
 const ExamDetail = Loadable(lazy(() => import("../pages/exam/ExamDetailForm")));
 
-// render - utilities
-const Typography = Loadable(
-  lazy(() => import("../pages/components-overview/Typography"))
-);
 const Color = Loadable(
   lazy(() => import("../pages/components-overview/Color"))
 );
-const Shadow = Loadable(
-  lazy(() => import("../pages/components-overview/Shadow"))
+//render - support
+const HelpnSupport = Loadable(
+  lazy(() => import("../pages/admin/supports/HelpnSupport"))
+);
+const Privacy = Loadable(lazy(() => import("../pages/admin/supports/Privacy")));
+const Feedback = Loadable(
+  lazy(() => import("../pages/admin/supports/Feedback"))
 );
 const AntIcons = Loadable(
   lazy(() => import("../pages/components-overview/AntIcons"))
@@ -61,16 +71,32 @@ const MainRoutes = {
       ]
     },
     {
-      path: "shadow",
-      element: <Shadow />
+      path: "help-support",
+      element: <HelpnSupport />
     },
     {
-      path: "typography",
-      element: <Typography />
+      path: "privacy-policy",
+      element: <Privacy />
+    },
+    {
+      path: "feed-back",
+      element: <Feedback />
     },
     {
       path: "icons/ant",
       element: <AntIcons />
+    },
+    {
+      path: "category-details",
+      element: <Category />
+    },
+    {
+      path: "subcategory-details",
+      element: <SubCategory />
+    },
+    {
+      path: "product-details",
+      element: <Product />
     },
     {
       path: "category/:id/:name",

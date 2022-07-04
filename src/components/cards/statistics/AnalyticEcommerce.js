@@ -22,7 +22,12 @@ const AnalyticEcommerce = ({
   extra,
   to
 }) => (
-  <MainCard contentSX={{ p: 2.25 }}>
+  <MainCard
+    contentSX={{
+      p: 2.25,
+      background: "linear-gradient(45deg, #e31515, #a31691de)"
+    }}
+  >
     <Stack spacing={0.5}>
       <Typography variant="h6" color="textSecondary">
         {title}
