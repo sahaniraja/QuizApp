@@ -1,5 +1,5 @@
 // material-ui
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Grid, Stack, Typography, Divider } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
@@ -22,6 +22,10 @@ const SubDashboard = () => {
         setsubCategory(res.data);
       });
   };
+
+  useEffect(() => {
+    getsubCategoryData();
+  }, []);
 
   // const subCategories = [
   //   {

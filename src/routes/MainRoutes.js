@@ -99,7 +99,7 @@ const MainRoutes = {
       element: <Product />
     },
     {
-      path: "category/:id/:name",
+      path: "category/:id",
       element: <SubDashboard />
     },
     {
