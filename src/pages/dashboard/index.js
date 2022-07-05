@@ -97,7 +97,7 @@ const DashboardDefault = () => {
         <Typography variant="h5">Dashboard</Typography>
       </Grid>
       {category.map((data) => {
-        const querypath = `/category/${data._id}/${data.catname}`;
+        const querypath = `/category/${data._id}`;
         return (
           <Grid item xs={12} sm={6} md={4} lg={3}>
             <AnalyticEcommerce
