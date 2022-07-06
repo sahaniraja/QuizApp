@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-
+import axios from "axios";
 // material-ui
 import {
   Box,
@@ -61,29 +61,40 @@ const AuthRegister = () => {
         initialValues={{
           firstname: "",
           lastname: "",
+          mobileno: "",
           email: "",
-          company: "",
           password: "",
           submit: null
         }}
         validationSchema={Yup.object().shape({
           firstname: Yup.string().max(255).required("First Name is required"),
           lastname: Yup.string().max(255).required("Last Name is required"),
+          mobileno: Yup.number().min(10).required("Mobile No is required"),
           email: Yup.string()
             .email("Must be a valid email")
             .max(255)
             .required("Email is required"),
           password: Yup.string().max(255).required("Password is required")
         })}
-        onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+        onSubmit={async (
+          values,
+          { setErrors, setStatus, setSubmitting, resetForm }
+        ) => {
           try {
             setStatus({ success: false });
             setSubmitting(false);
+            await axios
+              .post("https://nodejsquizapi.herokuapp.com/register", values)
+              .then((err) => {
+                console.log(err);
+              });
+            resetForm({ values: "" });
           } catch (err) {
             console.error(err);
             setStatus({ success: false });
             setErrors({ submit: err.message });
             setSubmitting(false);
+            console.log("Catch Block");
           }
         }}
       >
@@ -145,25 +156,27 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="company-signup">Company</InputLabel>
+                  <InputLabel htmlFor="mobileno">Mobile No.*</InputLabel>
                   <OutlinedInput
                     fullWidth
-                    error={Boolean(touched.company && errors.company)}
-                    id="company-signup"
-                    value={values.company}
-                    name="company"
+                    error={Boolean(touched.mobileno && errors.mobileno)}
+                    id="mobileno-register"
+                    type="mobileno"
+                    value={values.mobileno}
+                    name="mobileno"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    placeholder="Demo Inc."
+                    placeholder="9876543210"
                     inputProps={{}}
                   />
-                  {touched.company && errors.company && (
-                    <FormHelperText error id="helper-text-company-signup">
-                      {errors.company}
+                  {touched.mobileno && errors.mobileno && (
+                    <FormHelperText error id="helper-text-mobilno-signup">
+                      {errors.mobileno}
                     </FormHelperText>
                   )}
                 </Stack>
               </Grid>
+
               <Grid item xs={12}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="email-signup">Email Address*</InputLabel>
