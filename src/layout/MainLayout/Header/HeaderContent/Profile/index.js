@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { useRef, useState } from "react";
-
+import { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 // material-ui
 import { useTheme } from "@mui/material/styles";
 import {
@@ -32,6 +32,11 @@ import {
   SettingOutlined,
   UserOutlined
 } from "@ant-design/icons";
+import {
+  removeUserSession,
+  getUser,
+  getToken
+} from "../../../../../utils/common";
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -65,9 +70,12 @@ function a11yProps(index) {
 
 const Profile = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+  const user = getUser();
 
   const handleLogout = async () => {
-    // logout
+    removeUserSession();
+    navigate("/");
   };
 
   const anchorRef = useRef(null);
@@ -90,6 +98,8 @@ const Profile = () => {
   };
 
   const iconBackColorOpen = "grey.300";
+
+  useEffect(() => {}, []);
 
   return (
     <Box sx={{ flexShrink: 0, ml: 0.75 }}>

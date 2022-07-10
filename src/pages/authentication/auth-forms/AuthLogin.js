@@ -1,5 +1,7 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { setUserSession, getToken } from "../../../utils/common.js";
 
 // material-ui
 import {
@@ -32,8 +34,8 @@ import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  //const [username, setUsername] = React.useState("");
+  //const [password, setPassword] = React.useState("");
   const [checked, setChecked] = React.useState(false);
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -44,7 +46,8 @@ const AuthLogin = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
+  const navigate = useNavigate();
+  // let history = useHistory();
   return (
     <>
       <Formik
@@ -62,6 +65,36 @@ const AuthLogin = () => {
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
+            await axios
+              .post("login", values)
+              .then((res) => {
+                let userdetail = {
+                  name: res.data.user.firstname + " " + res.data.user.lastname,
+                  email: res.data.user.email,
+                  accestyp: 1
+                };
+                setUserSession(res.data.token, userdetail);
+                let chktoken = sessionStorage.getItem("token");
+                if (chktoken === res.data.token) {
+                  navigate("/");
+                  //console.log("Token Successfull");
+                } else {
+                  navigate("/login");
+                  //console.log("Token UnSuccessfull" + chktoken);
+                }
+
+                console.log(res);
+              })
+              .catch((err) => {
+                if (err.res?.status === 401 || err.res?.status === 400) {
+                  setErrors({ submit: err.res.data.message });
+                } else {
+                  setErrors({
+                    submit: "Something went wrong! Please try again later" + err
+                  });
+                }
+              });
+            // console.log(values);
             setStatus({ success: false });
             setSubmitting(false);
           } catch (err) {
