@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 // material-ui
 import {
   Box,
@@ -8,7 +9,7 @@ import {
   Button,
   useMediaQuery
 } from "@mui/material";
-import { LoginOutlined, ProfileOutlined } from "@ant-design/icons";
+import { LogoutOutlined } from "@ant-design/icons";
 
 // project import
 import Transitions from "../../../../components/@extended/Transitions";
@@ -16,12 +17,19 @@ import Search from "./Search";
 import Profile from "./Profile";
 import Notification from "./Notification";
 import MobileSection from "./MobileSection";
-import { getToken } from "../../../../utils/common";
+import { removeUserSession, getToken, getUser } from "../../../../utils/common";
 // ==============================|| HEADER - CONTENT ||============================== //
 
 const HeaderContent = () => {
   const matchesXs = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const token = getToken();
+
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    removeUserSession();
+    navigate("/");
+  };
+
   return (
     <>
       {!matchesXs && <Search />}
@@ -75,8 +83,17 @@ const HeaderContent = () => {
 
       {token && <Notification />}
 
-      {!matchesXs && <Profile />}
+      {!matchesXs && token && <Profile />}
+
       {matchesXs && <MobileSection />}
+
+      {matchesXs && token && (
+        <Box sx={{ flexShrink: 0, ml: 0.75 }}>
+          <IconButton size="large" color="secondary" onClick={handleLogout}>
+            <LogoutOutlined />
+          </IconButton>
+        </Box>
+      )}
     </>
   );
 };

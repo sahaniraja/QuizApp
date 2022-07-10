@@ -19,11 +19,13 @@ import Transitions from "../../../../components/@extended/Transitions";
 
 // assets
 import { MoreOutlined } from "@ant-design/icons";
-
+import { getUser, getToken } from "../../../../utils/common";
 // ==============================|| HEADER CONTENT - MOBILE ||============================== //
 
 const MobileSection = () => {
   const theme = useTheme();
+  const user = getUser();
+  const token = getToken();
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
@@ -95,7 +97,7 @@ const MobileSection = () => {
                 <AppBar color="inherit">
                   <Toolbar>
                     <Search />
-                    <Profile />
+                    {token && <Profile />}
                   </Toolbar>
                 </AppBar>
               </ClickAwayListener>
