@@ -10,7 +10,7 @@ import HeaderContent from "./HeaderContent";
 
 // assets
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-
+import { removeUserSession, getToken, getUser } from "../../../utils/common";
 // ==============================|| MAIN LAYOUT - HEADER ||============================== //
 
 const Header = ({ open, handleDrawerToggle }) => {
@@ -19,24 +19,27 @@ const Header = ({ open, handleDrawerToggle }) => {
 
   const iconBackColor = "grey.100";
   const iconBackColorOpen = "grey.200";
+  const token = getToken();
 
   // common header
   const mainHeader = (
     <Toolbar>
-      <IconButton
-        disableRipple
-        aria-label="open drawer"
-        onClick={handleDrawerToggle}
-        edge="start"
-        color="secondary"
-        sx={{
-          color: "text.primary",
-          bgcolor: open ? iconBackColorOpen : iconBackColor,
-          ml: { xs: 0, lg: -2 }
-        }}
-      >
-        {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </IconButton>
+      {token && (
+        <IconButton
+          disableRipple
+          aria-label="open drawer"
+          onClick={handleDrawerToggle}
+          edge="start"
+          color="secondary"
+          sx={{
+            color: "text.primary",
+            bgcolor: open ? iconBackColorOpen : iconBackColor,
+            ml: { xs: 0, lg: -2 }
+          }}
+        >
+          {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </IconButton>
+      )}
       <HeaderContent />
     </Toolbar>
   );

@@ -97,9 +97,9 @@ const DashboardDefault = () => {
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
-      <Grid item xs={12} sx={{ mb: -2.25 }}>
+      {/* <Grid item xs={12} sx={{ mb: -2.25 }}>
         <Typography variant="h5">Dashboard</Typography>
-      </Grid>
+      </Grid> */}
       {category.map((data) => {
         const querypath = `/category/${data._id}`;
         return (
@@ -148,82 +148,76 @@ const DashboardDefault = () => {
         sx={{ display: { sm: "none", md: "block", lg: "none" } }}
       />
       {/* row 2 */}
-      {
-        (user.accesstyp = 1 && token && (
-          <Grid item xs={12} md={7} lg={8}>
-            <Grid container alignItems="center" justifyContent="space-between">
-              <Grid item>
-                <Typography variant="h5">Unique Visitor</Typography>
-              </Grid>
-              <Grid item>
-                <Stack direction="row" alignItems="center" spacing={0}>
-                  <Button
-                    size="small"
-                    onClick={() => setSlot("month")}
-                    color={slot === "month" ? "primary" : "secondary"}
-                    variant={slot === "month" ? "outlined" : "text"}
-                  >
-                    Month
-                  </Button>
-                  <Button
-                    size="small"
-                    onClick={() => setSlot("week")}
-                    color={slot === "week" ? "primary" : "secondary"}
-                    variant={slot === "week" ? "outlined" : "text"}
-                  >
-                    Week
-                  </Button>
-                </Stack>
-              </Grid>
+      {user && token && (
+        <Grid item xs={12} md={7} lg={8}>
+          <Grid container alignItems="center" justifyContent="space-between">
+            <Grid item>
+              <Typography variant="h5">Unique Visitor</Typography>
             </Grid>
+            <Grid item>
+              <Stack direction="row" alignItems="center" spacing={0}>
+                <Button
+                  size="small"
+                  onClick={() => setSlot("month")}
+                  color={slot === "month" ? "primary" : "secondary"}
+                  variant={slot === "month" ? "outlined" : "text"}
+                >
+                  Month
+                </Button>
+                <Button
+                  size="small"
+                  onClick={() => setSlot("week")}
+                  color={slot === "week" ? "primary" : "secondary"}
+                  variant={slot === "week" ? "outlined" : "text"}
+                >
+                  Week
+                </Button>
+              </Stack>
+            </Grid>
+          </Grid>
 
-            <MainCard content={false} sx={{ mt: 1.5 }}>
-              <Box sx={{ pt: 1, pr: 2 }}>
-                <IncomeAreaChart slot={slot} />
-              </Box>
-            </MainCard>
-          </Grid>
-        ))
-      }
-      {
-        (user.accesstyp = 1 && token && (
-          <Grid item xs={12} md={5} lg={4}>
-            <Grid container alignItems="center" justifyContent="space-between">
-              <Grid item>
-                <Typography variant="h5">Income Overview</Typography>
-              </Grid>
-              <Grid item />
+          <MainCard content={false} sx={{ mt: 1.5 }}>
+            <Box sx={{ pt: 1, pr: 2 }}>
+              <IncomeAreaChart slot={slot} />
+            </Box>
+          </MainCard>
+        </Grid>
+      )}
+      {user && token && (
+        <Grid item xs={12} md={5} lg={4}>
+          <Grid container alignItems="center" justifyContent="space-between">
+            <Grid item>
+              <Typography variant="h5">Income Overview</Typography>
             </Grid>
-            <MainCard sx={{ mt: 2 }} content={false}>
-              <Box sx={{ p: 3, pb: 0 }}>
-                <Stack spacing={2}>
-                  <Typography variant="h6" color="textSecondary">
-                    This Week Statistics
-                  </Typography>
-                  <Typography variant="h3">$7,650</Typography>
-                </Stack>
-              </Box>
-              <MonthlyBarChart />
-            </MainCard>
+            <Grid item />
           </Grid>
-        ))
-      }
+          <MainCard sx={{ mt: 2 }} content={false}>
+            <Box sx={{ p: 3, pb: 0 }}>
+              <Stack spacing={2}>
+                <Typography variant="h6" color="textSecondary">
+                  This Week Statistics
+                </Typography>
+                <Typography variant="h3">$7,650</Typography>
+              </Stack>
+            </Box>
+            <MonthlyBarChart />
+          </MainCard>
+        </Grid>
+      )}
       {/* row 3 */}
-      {
-        (user.accesstyp = 1 && token && (
-          <Grid item xs={12} md={7} lg={8}>
-            <Grid container alignItems="center" justifyContent="space-between">
-              <Grid item>
-                <Typography variant="h5">Recent Orders</Typography>
-              </Grid>
-              <Grid item />
+      {user && token && (
+        <Grid item xs={12} md={7} lg={8}>
+          <Grid container alignItems="center" justifyContent="space-between">
+            <Grid item>
+              <Typography variant="h5">Recent Orders</Typography>
             </Grid>
-            <MainCard sx={{ mt: 2 }} content={false}>
-              <OrdersTable />
-            </MainCard>
+            <Grid item />
           </Grid>
-        ))
-      }
+          <MainCard sx={{ mt: 2 }} content={false}>
+            <OrdersTable />
+          </MainCard>
+        </Grid>
+      )}
       {token && (
         <Grid item xs={12} md={5} lg={4}>
           <Grid container alignItems="center" justifyContent="space-between">
@@ -252,196 +246,192 @@ const DashboardDefault = () => {
         </Grid>
       )}
       {/* row 4 */}
-      {
-        (user.accesstyp = 1 && token && (
-          <Grid item xs={12} md={7} lg={8}>
-            <Grid container alignItems="center" justifyContent="space-between">
-              <Grid item>
-                <Typography variant="h5">Sales Report</Typography>
-              </Grid>
-              <Grid item>
-                <TextField
-                  id="standard-select-currency"
-                  size="small"
-                  select
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  sx={{
-                    "& .MuiInputBase-input": { py: 0.5, fontSize: "0.875rem" }
-                  }}
-                >
-                  {status.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
+      {user && token && (
+        <Grid item xs={12} md={7} lg={8}>
+          <Grid container alignItems="center" justifyContent="space-between">
+            <Grid item>
+              <Typography variant="h5">Sales Report</Typography>
             </Grid>
-            <MainCard sx={{ mt: 1.75 }}>
-              <Stack spacing={1.5} sx={{ mb: -12 }}>
-                <Typography variant="h6" color="secondary">
-                  Net Profit
-                </Typography>
-                <Typography variant="h4">$1560</Typography>
-              </Stack>
-              <SalesColumnChart />
-            </MainCard>
-          </Grid>
-        ))
-      }
-      {
-        (user.accesstyp = 1 && token && (
-          <Grid item xs={12} md={5} lg={4}>
-            <Grid container alignItems="center" justifyContent="space-between">
-              <Grid item>
-                <Typography variant="h5">Transaction History</Typography>
-              </Grid>
-              <Grid item />
-            </Grid>
-            <MainCard sx={{ mt: 2 }} content={false}>
-              <List
-                component="nav"
+            <Grid item>
+              <TextField
+                id="standard-select-currency"
+                size="small"
+                select
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
                 sx={{
-                  px: 0,
-                  py: 0,
-                  "& .MuiListItemButton-root": {
-                    py: 1.5,
-                    "& .MuiAvatar-root": avatarSX,
-                    "& .MuiListItemSecondaryAction-root": {
-                      ...actionSX,
-                      position: "relative"
-                    }
-                  }
+                  "& .MuiInputBase-input": { py: 0.5, fontSize: "0.875rem" }
                 }}
               >
-                <ListItemButton divider>
-                  <ListItemAvatar>
-                    <Avatar
-                      sx={{
-                        color: "success.main",
-                        bgcolor: "success.lighter"
-                      }}
-                    >
-                      <GiftOutlined />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={
-                      <Typography variant="subtitle1">Order #002434</Typography>
-                    }
-                    secondary="Today, 2:00 AM"
-                  />
-                  <ListItemSecondaryAction>
-                    <Stack alignItems="flex-end">
-                      <Typography variant="subtitle1" noWrap>
-                        + $1,430
-                      </Typography>
-                      <Typography variant="h6" color="secondary" noWrap>
-                        78%
-                      </Typography>
-                    </Stack>
-                  </ListItemSecondaryAction>
-                </ListItemButton>
-                <ListItemButton divider>
-                  <ListItemAvatar>
-                    <Avatar
-                      sx={{
-                        color: "primary.main",
-                        bgcolor: "primary.lighter"
-                      }}
-                    >
-                      <MessageOutlined />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={
-                      <Typography variant="subtitle1">Order #984947</Typography>
-                    }
-                    secondary="5 August, 1:45 PM"
-                  />
-                  <ListItemSecondaryAction>
-                    <Stack alignItems="flex-end">
-                      <Typography variant="subtitle1" noWrap>
-                        + $302
-                      </Typography>
-                      <Typography variant="h6" color="secondary" noWrap>
-                        8%
-                      </Typography>
-                    </Stack>
-                  </ListItemSecondaryAction>
-                </ListItemButton>
-                <ListItemButton>
-                  <ListItemAvatar>
-                    <Avatar
-                      sx={{
-                        color: "error.main",
-                        bgcolor: "error.lighter"
-                      }}
-                    >
-                      <SettingOutlined />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={
-                      <Typography variant="subtitle1">Order #988784</Typography>
-                    }
-                    secondary="7 hours ago"
-                  />
-                  <ListItemSecondaryAction>
-                    <Stack alignItems="flex-end">
-                      <Typography variant="subtitle1" noWrap>
-                        + $682
-                      </Typography>
-                      <Typography variant="h6" color="secondary" noWrap>
-                        16%
-                      </Typography>
-                    </Stack>
-                  </ListItemSecondaryAction>
-                </ListItemButton>
-              </List>
-            </MainCard>
-
-            <MainCard sx={{ mt: 2 }}>
-              <Stack spacing={3}>
-                <Grid
-                  container
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <Grid item>
-                    <Stack>
-                      <Typography variant="h5" noWrap>
-                        Help & Support Chat
-                      </Typography>
-                      <Typography variant="caption" color="secondary" noWrap>
-                        Typical replay within 5 min
-                      </Typography>
-                    </Stack>
-                  </Grid>
-                  <Grid item>
-                    <AvatarGroup
-                      sx={{ "& .MuiAvatar-root": { width: 32, height: 32 } }}
-                    >
-                      <Avatar alt="Remy Sharp" src={avatar1} />
-                      <Avatar alt="Travis Howard" src={avatar2} />
-                      <Avatar alt="Cindy Baker" src={avatar3} />
-                      <Avatar alt="Agnes Walker" src={avatar4} />
-                    </AvatarGroup>
-                  </Grid>
-                </Grid>
-                <Button
-                  size="small"
-                  variant="contained"
-                  sx={{ textTransform: "capitalize" }}
-                >
-                  Need Help?
-                </Button>
-              </Stack>
-            </MainCard>
+                {status.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
           </Grid>
-        ))
-      }
+          <MainCard sx={{ mt: 1.75 }}>
+            <Stack spacing={1.5} sx={{ mb: -12 }}>
+              <Typography variant="h6" color="secondary">
+                Net Profit
+              </Typography>
+              <Typography variant="h4">$1560</Typography>
+            </Stack>
+            <SalesColumnChart />
+          </MainCard>
+        </Grid>
+      )}
+      {user && token && (
+        <Grid item xs={12} md={5} lg={4}>
+          <Grid container alignItems="center" justifyContent="space-between">
+            <Grid item>
+              <Typography variant="h5">Transaction History</Typography>
+            </Grid>
+            <Grid item />
+          </Grid>
+          <MainCard sx={{ mt: 2 }} content={false}>
+            <List
+              component="nav"
+              sx={{
+                px: 0,
+                py: 0,
+                "& .MuiListItemButton-root": {
+                  py: 1.5,
+                  "& .MuiAvatar-root": avatarSX,
+                  "& .MuiListItemSecondaryAction-root": {
+                    ...actionSX,
+                    position: "relative"
+                  }
+                }
+              }}
+            >
+              <ListItemButton divider>
+                <ListItemAvatar>
+                  <Avatar
+                    sx={{
+                      color: "success.main",
+                      bgcolor: "success.lighter"
+                    }}
+                  >
+                    <GiftOutlined />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={
+                    <Typography variant="subtitle1">Order #002434</Typography>
+                  }
+                  secondary="Today, 2:00 AM"
+                />
+                <ListItemSecondaryAction>
+                  <Stack alignItems="flex-end">
+                    <Typography variant="subtitle1" noWrap>
+                      + $1,430
+                    </Typography>
+                    <Typography variant="h6" color="secondary" noWrap>
+                      78%
+                    </Typography>
+                  </Stack>
+                </ListItemSecondaryAction>
+              </ListItemButton>
+              <ListItemButton divider>
+                <ListItemAvatar>
+                  <Avatar
+                    sx={{
+                      color: "primary.main",
+                      bgcolor: "primary.lighter"
+                    }}
+                  >
+                    <MessageOutlined />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={
+                    <Typography variant="subtitle1">Order #984947</Typography>
+                  }
+                  secondary="5 August, 1:45 PM"
+                />
+                <ListItemSecondaryAction>
+                  <Stack alignItems="flex-end">
+                    <Typography variant="subtitle1" noWrap>
+                      + $302
+                    </Typography>
+                    <Typography variant="h6" color="secondary" noWrap>
+                      8%
+                    </Typography>
+                  </Stack>
+                </ListItemSecondaryAction>
+              </ListItemButton>
+              <ListItemButton>
+                <ListItemAvatar>
+                  <Avatar
+                    sx={{
+                      color: "error.main",
+                      bgcolor: "error.lighter"
+                    }}
+                  >
+                    <SettingOutlined />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={
+                    <Typography variant="subtitle1">Order #988784</Typography>
+                  }
+                  secondary="7 hours ago"
+                />
+                <ListItemSecondaryAction>
+                  <Stack alignItems="flex-end">
+                    <Typography variant="subtitle1" noWrap>
+                      + $682
+                    </Typography>
+                    <Typography variant="h6" color="secondary" noWrap>
+                      16%
+                    </Typography>
+                  </Stack>
+                </ListItemSecondaryAction>
+              </ListItemButton>
+            </List>
+          </MainCard>
+
+          <MainCard sx={{ mt: 2 }}>
+            <Stack spacing={3}>
+              <Grid
+                container
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Grid item>
+                  <Stack>
+                    <Typography variant="h5" noWrap>
+                      Help & Support Chat
+                    </Typography>
+                    <Typography variant="caption" color="secondary" noWrap>
+                      Typical replay within 5 min
+                    </Typography>
+                  </Stack>
+                </Grid>
+                <Grid item>
+                  <AvatarGroup
+                    sx={{ "& .MuiAvatar-root": { width: 32, height: 32 } }}
+                  >
+                    <Avatar alt="Remy Sharp" src={avatar1} />
+                    <Avatar alt="Travis Howard" src={avatar2} />
+                    <Avatar alt="Cindy Baker" src={avatar3} />
+                    <Avatar alt="Agnes Walker" src={avatar4} />
+                  </AvatarGroup>
+                </Grid>
+              </Grid>
+              <Button
+                size="small"
+                variant="contained"
+                sx={{ textTransform: "capitalize" }}
+              >
+                Need Help?
+              </Button>
+            </Stack>
+          </MainCard>
+        </Grid>
+      )}
     </Grid>
   );
 };
